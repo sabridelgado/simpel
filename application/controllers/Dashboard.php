@@ -49,6 +49,39 @@ class Dashboard extends CI_Controller
 
 	public function simulasi()
 	{
+		$waktui = 0;
+		$meniti = 0;
+		$detiki = 0;
+		$waktu = 0;
+		$menit = 0;
+		$detik = 0;
+		$jumlahAntrian = 15;
+		$durasi = 1 * 60 * 60;
+		$randomValue = 0;
+		$iwk = 0;
+		$wk = 0;
+		for ($i = 1; $i <= $jumlahAntrian; $i++) {
+			$data['jumlah'][]  = [
+				$i,
+				$randomValue,
+				$iwk,
+				$wk,
+				$meniti,
+				$detiki,
+				$menit,
+				$detik
+			];
+
+			$randomValue = rand(0.1 * 10, 0.9 * 10) / 10;
+			$iwk = abs((1 / $jumlahAntrian) * log($randomValue));
+			$wk += $iwk;
+			$waktui = ceil($iwk * $durasi);
+			$meniti = floor($waktui / 60);
+			$detiki = $waktui % 60;
+			$waktu = ceil($wk * $durasi);
+			$menit = floor($waktu / 60);
+			$detik = $waktu % 60;
+		}
 		$data['user'] = $this->db->get_where('tabel_user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['nama1'] = $this->uri->segment(1);
 		$data['nama'] = $this->uri->segment(2);
