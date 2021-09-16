@@ -24,7 +24,7 @@
         <!-- tombol -->
         <div class="container-fluid">
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#simulasikedatangan" data-whatever="">Simulasi Kedatangan</button>
-            <button type="button" class="btn btn-danger"><a style="text-decoration: none; color: white;" href="<?= base_url('Dashboard/resetdata') ?>">Reset Data</a></button>
+            <button type="button" class="btn btn-danger"><a style="text-decoration: none; color: white;" href="<?= base_url('Dashboard') ?>">Reset Data</a></button>
         </div>
     </section>
     <!-- Parameter -->
@@ -44,6 +44,8 @@
                                     <tr>
                                         <th>Kedatangan</th>
                                         <th>Bilangan Acak</th>
+                                        <th>Durasi</th>
+                                        <th>Konter</th>
                                         <th>IWK dalam menit</th>
                                         <th>WK dalam menit</th>
                                     </tr>
@@ -53,25 +55,25 @@
 
                                     <?php
 
-                                    foreach ($s_kedatangan as $tampil) :
-                                    ?>
+                                    for ($i = 0; $i < count($jumlah); $i++) { ?>
                                         <tr>
-                                            <td><?= $tampil['kedatangan'] ?></td>
-                                            <td><?= $tampil['bilAcak'] ?></td>
-                                            <td><?= $tampil['iwk_waktu'] ?></td>
-                                            <td><?= $tampil['wk_waktu'] ?></td>
-
+                                            <td> <?= $jumlah[$i][0] ?> </td>
+                                            <td> <?= $jumlah[$i][1] ?> </td>
+                                            <td><?= $jumlah[$i][2] ?></td>
+                                            <td><?= $jumlah[$i][3] ?></td>
+                                            <td><?= $jumlah[$i][4] ?></td>
+                                            <td><?= $jumlah[$i][5] ?></td>
                                         </tr>
-                                    <?php
-                                    endforeach;
-                                    ?>
 
+                                    <?php } ?>
 
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>Kedatangan</th>
                                         <th>Bilangan Acak</th>
+                                        <th>Durasi</th>
+                                        <th>Konter</th>
                                         <th>IWK dalam menit</th>
                                         <th>WK dalam menit</th>
                                     </tr>
@@ -142,3 +144,4 @@
     <!-- Control sidebar content goes here -->
 </aside>
 <!-- /.control-sidebar -->
+<!-- Main content -->

@@ -24,11 +24,7 @@
 
 
 
-        <!-- tombol -->
-        <div class="container-fluid">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#simulasi" data-whatever="">Simulasi Antrian</button>
-            <button type="button" class="btn btn-danger"><a style="text-decoration: none; color: white;" href="<?= base_url('Dashboard') ?>">Reset Data</a></button>
-        </div>
+
 
         <!-- Parameter -->
         <div class="container-fluid mt-4">
@@ -140,56 +136,3 @@
 
 </div>
 <!-- /.content-wrapper -->
-
-
-
-
-
-<!-- Form Input -->
-
-<div class="modal fade" id="simulasi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Simulasi Antrian </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="<?= base_url('Dashboard/input'); ?>" method="POST">
-                <div class="modal-body">
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputAddress">Laju Antrian</label>
-                            <input type="number" class="form-control" id="i_lamda" name="i_lamda" placeholder="1234">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputAddress">Laju Pelayanan</label>
-                            <input type="number" class="form-control" id="i_miu" name="i_miu" placeholder="1234">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputAddress">Jumlah Antrian</label>
-                        <input type="number" class="form-control" id="i_jumlah" name="i_jumlah" placeholder="1234">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputAddress">Teler</label>
-                        <input type="number" class="form-control" id="i_teler" name="i_teler" placeholder="1234">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputAddress2">Durasi</label>
-                        <input type="number" class="form-control" id="" placeholder="1234">
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" value="submit" name="submit" class="btn btn-primary">Mulai Simulasi</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- ./col -->
-</div>
