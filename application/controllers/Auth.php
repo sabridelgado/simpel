@@ -36,8 +36,8 @@ class Auth extends CI_Controller
 
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('header');
-            $this->load->view('auth/login', $data);
+
+            $this->load->view('auth/auth', $data);
         } else {
             $this->_login();
         }
@@ -64,6 +64,7 @@ class Auth extends CI_Controller
             $data = [
                 'username' => htmlspecialchars($this->input->post('username'), true),
                 'password' => $hast,
+                'image' => 'default.png',
                 'date_created' => time(),
             ];
 
@@ -111,5 +112,11 @@ class Auth extends CI_Controller
 
         $this->session->unset_userdata('username');
         redirect('');
+    }
+
+    public function profil()
+    {
+        $upload_image = $_FILES['gambar'];
+        var_dump($upload_image);
     }
 }

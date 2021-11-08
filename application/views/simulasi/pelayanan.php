@@ -4,6 +4,7 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
+
                 <div class="col-sm-6">
                     <h1 class="m-0"> Simulasi</h1>
                 </div><!-- /.col -->
@@ -21,12 +22,16 @@
     <!-- Main content -->
     <!-- Main content -->
     <section class="content mb-3">
+
+        <?= $this->session->flashdata('message') ?>
         <!-- tombol -->
         <div class="container-fluid">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#simulasikedatangan" data-whatever="">Simulasi Kedatangan</button>
-            <button type="button" class="btn btn-danger"><a style="text-decoration: none; color: white;" href="<?= base_url('Dashboard/resetdata') ?>">Reset Data</a></button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#simulasipelayanan" data-whatever="">Simulasi Pelayanan</button>
+            <button type="button" class="btn btn-danger"><a style="text-decoration: none; color: white;" href="<?= base_url('simulasi/resetdata') ?>">Reset Data</a></button>
         </div>
     </section>
+
+
     <!-- Parameter -->
 
     <section class="content">
@@ -42,10 +47,12 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Kedatangan</th>
+                                        <th>Pelayanan</th>
                                         <th>Bilangan Acak</th>
-                                        <th>IWK dalam menit</th>
-                                        <th>WK dalam menit</th>
+                                        <th>Waktu Mulai</th>
+                                        <th>Waktu Selesai</th>
+                                        <th>Waktu Tunggu</th>
+                                        <th>Waku Tunggu Sys</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -53,13 +60,15 @@
 
                                     <?php
 
-                                    foreach ($s_kedatangan as $tampil) :
+                                    foreach ($s_layan as $tampil) :
                                     ?>
                                         <tr>
-                                            <td><?= $tampil['kedatangan'] ?></td>
-                                            <td><?= $tampil['bilAcak'] ?></td>
-                                            <td><?= $tampil['iwk_waktu'] ?></td>
-                                            <td><?= $tampil['wk_waktu'] ?></td>
+                                            <td><?= $tampil['id'] ?></td>
+                                            <td><?= $tampil['acak'] ?></td>
+                                            <td><?= $tampil['w_mulai'] ?></td>
+                                            <td><?= $tampil['w_selesai'] ?></td>
+                                            <td><?= $tampil['w_tunggu'] ?></td>
+                                            <td><?= $tampil['w_tunggusys'] ?></td>
 
                                         </tr>
                                     <?php
@@ -70,10 +79,12 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Kedatangan</th>
+                                        <th>Pelayanan</th>
                                         <th>Bilangan Acak</th>
-                                        <th>IWK dalam menit</th>
-                                        <th>WK dalam menit</th>
+                                        <th>Waktu Mulai</th>
+                                        <th>Waktu Selesai</th>
+                                        <th>Waktu Tunggu</th>
+                                        <th>Waku Tunggu Sys</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -100,7 +111,7 @@
 
 <!-- Form Input -->
 
-<div class="modal fade" id="simulasikedatangan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="simulasipelayanan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -109,17 +120,17 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= base_url('Dashboard/kedatangan'); ?>" method="POST">
+            <form action="<?= base_url('simulasi/simulasi_pelayanan'); ?>" method="POST">
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Laju Antrian:</label>
-                        <input type="numerik" name="lamda" class="form-control" placeholder="laju antrian/satuan waktu" value="<?= set_value('lamda') ?>">
+                        <label for="recipient-name" class="col-form-label">Laju Pelayanan:</label>
+                        <input type="numerik" name="miu" class="form-control" placeholder="laju pelayanan/satuan waktu" value="<?= set_value('lamda') ?>">
                         <?php echo form_error('lamda', '<small class="text-danger mt-1">', '</small>'); ?>
                     </div>
 
                     <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Durasi:</label>
-                        <input type="numerik" name="durasi" class="form-control" placeholder="Waktu Simulasi/ jam" value="<?= set_value('durasi') ?>">
+                        <label for="recipient-name" class="col-form-label">Jumlah Loket:</label>
+                        <input type="numerik" name="loket" class="form-control" placeholder="jumlah loket" value="<?= set_value('durasi') ?>">
                         <?php echo form_error('durasi', '<small class="text-danger mt-1">', '</small>'); ?>
                     </div>
 
